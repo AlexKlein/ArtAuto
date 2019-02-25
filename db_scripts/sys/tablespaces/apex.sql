@@ -1,0 +1,1 @@
+﻿create tablespace apex datafile 'C:\ORACLEXE\APP\ORACLE\ORADATA\XE\APEX.DBF';
