@@ -12,7 +12,8 @@ end;
 /
 create table client_dim (uk    number not null,
                          phone varchar2(16),
-                         name  varchar2(256))
+                         name  varchar2(256),
+                         email varchar2(256))
 tablespace apex;
 
 comment on table client_dim is 'Список клиентов';
@@ -20,6 +21,7 @@ comment on table client_dim is 'Список клиентов';
 comment on column client_dim.uk    is 'Уникальный ключ';
 comment on column client_dim.phone is 'Телефон';
 comment on column client_dim.name  is 'Имя';
+comment on column client_dim.email is 'Электронная почта';
 
 create unique index uk_client_dim on client_dim
 (uk)
