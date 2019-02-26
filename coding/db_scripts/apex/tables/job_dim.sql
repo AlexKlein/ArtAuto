@@ -10,16 +10,16 @@ exception
         dbms_output.put_line('Ошибка '||sqlerrm);
 end;
 /
-create table job_dim (uk         number not null,
-                      parent_uk  number,
-                      decription varchar2(256))
+create table job_dim (uk          number not null,
+                      parent_uk   number,
+                      description varchar2(256))
 tablespace apex;
 
 comment on table job_dim is 'Работы сервиса';
 
-comment on column job_dim.uk         is 'Уникальный ключ';
-comment on column job_dim.parent_uk  is 'Тип работ';
-comment on column job_dim.decription is 'Описание';
+comment on column job_dim.uk          is 'Уникальный ключ';
+comment on column job_dim.parent_uk   is 'Тип работ';
+comment on column job_dim.description is 'Описание';
 
 create unique index uk_job_dim on job_dim
 (uk)
