@@ -13,7 +13,8 @@ end;
 create table order_fct (order_ccode    varchar2(256) not null,
                         order_date     date          not null,
                         auto_uk        number        not null,
-                        recommendation varchar2(4000))
+                        recommendation varchar2(4000),
+                        master_uk      number)
 tablespace apex;
 
 comment on table order_fct is 'Запись на сервис';
@@ -22,3 +23,4 @@ comment on column order_fct.order_ccode    is 'Заказ наряд';
 comment on column order_fct.order_date     is 'Дата проведения работ';
 comment on column order_fct.auto_uk        is 'Автомобиль';
 comment on column order_fct.recommendation is 'Рекомендации сервиса на будущее';
+comment on column order_fct.master_uk      is 'Мастер/исполнитель';
