@@ -1,5 +1,5 @@
 ﻿create user apex
-  identified by apex1
+  identified by <PASSWORD>
   default tablespace apex
   temporary tablespace temp
   profile default
