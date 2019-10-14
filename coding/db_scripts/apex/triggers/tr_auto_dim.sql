@@ -1,4 +1,4 @@
-﻿create or replace trigger tr_auto_dim
+create or replace trigger tr_auto_dim
 before insert on auto_dim
 referencing new as new old as old
 for each row

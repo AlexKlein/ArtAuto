@@ -1,4 +1,4 @@
-﻿declare
+declare
     object_not_found exception;
     pragma exception_init(object_not_found, -02289);
 begin

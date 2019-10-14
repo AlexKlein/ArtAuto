@@ -1,4 +1,4 @@
-﻿create or replace trigger tr_job_dim
+create or replace trigger tr_job_dim
 before insert on job_dim
 referencing new as new old as old
 for each row

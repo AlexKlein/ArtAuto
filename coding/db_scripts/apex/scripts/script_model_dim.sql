@@ -1,4 +1,4 @@
-﻿insert into model_dim (uk, maker_uk, name) values (get_uk, (select uk from maker_dim where name = 'Acura'), 'CL');
+insert into model_dim (uk, maker_uk, name) values (get_uk, (select uk from maker_dim where name = 'Acura'), 'CL');
 insert into model_dim (uk, maker_uk, name) values (get_uk, (select uk from maker_dim where name = 'Acura'), 'EL');
 insert into model_dim (uk, maker_uk, name) values (get_uk, (select uk from maker_dim where name = 'Acura'), 'ILX');
 insert into model_dim (uk, maker_uk, name) values (get_uk, (select uk from maker_dim where name = 'Acura'), 'Integra');

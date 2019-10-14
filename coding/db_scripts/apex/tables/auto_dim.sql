@@ -1,4 +1,4 @@
-﻿declare
+declare
     object_not_found exception;
     pragma exception_init(object_not_found, -00942);
 begin
@@ -29,6 +29,6 @@ comment on column auto_dim.mileage    is 'Пробег';
 comment on column auto_dim.month_year is 'Год выпуска';
 comment on column auto_dim.client_uk  is 'Владелец';
 
-create unique index apex.uk_auto_dim on apex.auto_dim
+create unique index uk_auto_dim on auto_dim
 (uk)
 tablespace apex;

@@ -1,4 +1,4 @@
-﻿create or replace trigger tr_client_dim
+create or replace trigger tr_client_dim
 before insert on client_dim
 referencing new as new old as old
 for each row

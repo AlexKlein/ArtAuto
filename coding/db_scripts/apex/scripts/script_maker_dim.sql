@@ -1,4 +1,4 @@
-﻿insert into maker_dim (uk, name) values (get_uk, 'Acura');
+insert into maker_dim (uk, name) values (get_uk, 'Acura');
 insert into maker_dim (uk, name) values (get_uk, 'Alfa Romeo');
 insert into maker_dim (uk, name) values (get_uk, 'Aston Martin');
 insert into maker_dim (uk, name) values (get_uk, 'Audi');

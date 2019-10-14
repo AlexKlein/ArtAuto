@@ -1,4 +1,4 @@
-﻿create or replace function get_uk return number
+create or replace function get_uk return number
 as
     res number;
 begin

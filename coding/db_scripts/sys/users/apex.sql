@@ -1,6 +1,6 @@
-﻿create user apex
-  identified by <PASSWORD>
-  default tablespace apex
+create user apex
+  identified by &APEX_PWD
+  --default tablespace apex
   temporary tablespace temp
   profile default
   account unlock;
@@ -24,7 +24,7 @@
   grant select any table to apex;
   grant unlimited tablespace to apex;
   -- 1 Tablespace Quota for APEX 
-  alter user apex quota unlimited on apex;
+  --alter user apex quota unlimited on apex;
   -- 1 Object Privilege for APEX 
     grant select on sys.user$ to apex;
   -- 1 Resoure Group Privilege for APEX 

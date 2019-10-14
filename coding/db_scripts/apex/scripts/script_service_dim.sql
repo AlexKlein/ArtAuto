@@ -1,4 +1,4 @@
-﻿insert into service_dim (name,
+insert into service_dim (name,
                          address,
                          service_phone,
                          order_phone) values ('"ООО Арт-Авто"',

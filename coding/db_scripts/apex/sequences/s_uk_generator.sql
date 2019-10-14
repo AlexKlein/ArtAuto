@@ -7,7 +7,7 @@ exception
     when object_not_found then
         null;
     when others then
-        dbms_output.put_line('Îøèáêà '||sqlerrm);
+        dbms_output.put_line('ĞÑˆĞ¸Ğ±ĞºĞ° '||sqlerrm);
 end;
 /
 create sequence s_uk_generator;

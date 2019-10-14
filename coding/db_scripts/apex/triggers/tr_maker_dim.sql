@@ -1,4 +1,4 @@
-﻿create or replace trigger tr_maker_dim
+create or replace trigger tr_maker_dim
 before insert on maker_dim
 referencing new as new old as old
 for each row

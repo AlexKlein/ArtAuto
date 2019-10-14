@@ -1,1 +1,1 @@
-﻿create tablespace apex datafile 'C:\ORACLEXE\APP\ORACLE\ORADATA\XE\APEX.DBF';
+create tablespace apex datafile 'APEX.DBF' size 100m autoextend on next 1m;

@@ -1,4 +1,4 @@
-﻿create or replace trigger tr_model_dim
+create or replace trigger tr_model_dim
 before insert on model_dim
 referencing new as new old as old
 for each row
