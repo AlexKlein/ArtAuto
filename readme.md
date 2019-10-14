@@ -8,4 +8,5 @@ This software is for "ArtAuto" car service. In this software, a responsible empl
 2. Create work orders and print it to clients.
 
 ## Before using
-Don't forget to change passwords in [install.sh](install.sh) script
+Don't forget to change passwords in [install.sh](install.sh) script.
+Also, you need to download [apex_19.1](http://download.oracle.com/otn/java/appexpress/apex_19.1.zip) and replace ZIP-file in [directory](./upgrade) with it.
