@@ -1,12 +1,13 @@
 # ArtAuto
 
-This software is for "ArtAuto" car service. In this software, a responsible employee can write cars in the service queue and print work orders.
+This software is for "ArtAuto" car service. In this software, a manager might create queues for works and orders for printing.
 
 ## Features
 
-1. Write cars in service queue.
-2. Create work orders and print it to clients.
+1. Creation queues for car service works.
+2. Creation work orders and print it for clients.
 
 ## Before using
-Don't forget to change passwords in [install.sh](install.sh) script.
-Also, you need to download [apex_19.1](http://download.oracle.com/otn/java/appexpress/apex_19.1.zip) and replace ZIP-file in [directory](./upgrade) with it.
+
+Don't forget to think up apex schema password and to know IP address of container when you will launch [install.sh](install.sh) script.
+Also, you need to download [apex_19.1](https://www.oracle.com/tools/downloads/apex-v191-downloads.html) and replace ZIP-file in [directory](./upgrade) with it.

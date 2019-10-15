@@ -7,13 +7,13 @@
 #******************************* HISTORY *******************************************
 
 # attributes of database
-DB_HostName=192.168.99.100
+DB_HostName=$1
 DB_Port=1521
 DB_SID=XE
 DB_UserSYS=SYS
 DB_PasswordSYS=oracle
 DB_UserName=APEX
-DB_Password=
+DB_Password=$2
 
 # export system environment variables
 export ORACLE_BASE=/u01/app/oracle
@@ -54,7 +54,7 @@ db_statuscheck_sys() {
     echo "`date` : Trying to connect as "${DB_UserSYS}"@"${DB_SID}""
     echo "`date` : Connection string in use is : (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=${DB_HostName})(PORT=${DB_Port})))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=${DB_SID}))) as SYSDBA"
     echo "exit" | $ORACLE_HOME/bin/sqlplus "${DB_UserSYS}/${DB_PasswordSYS}@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=${DB_HostName})(PORT=${DB_Port})))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=${DB_SID}))) as SYSDBA" | grep -v "Connected to:" > /dev/null
-	if [ $? -eq 0 ] 
+if [ $? -eq 0 ] 
     then
         DB_STATUS="UP"
         export DB_STATUS
@@ -71,18 +71,18 @@ db_statuscheck_usr() {
     echo "`date` : Trying to connect as "${DB_UserName}"@"${DB_SID}""
     echo "`date` : Connection string in use is : (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST="${DB_HostName}")(PORT="${DB_Port}")))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME="${DB_SID}")))"
     echo "exit" | $ORACLE_HOME/bin/sqlplus "${DB_UserName}/${DB_Password}@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=${DB_HostName})(PORT=${DB_Port})))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=${DB_SID}))) as SYSDBA" | grep -v "Connected to:" > /dev/null
-	if [ $? -eq 0 ] 
-	then
-		DB_STATUS="UP"
-		export DB_STATUS
-		echo "`date` : Connection is possible"
-		
+if [ $? -eq 0 ] 
+then
+DB_STATUS="UP"
+export DB_STATUS
+echo "`date` : Connection is possible"
+
     else
-		DB_STATUS="DOWN"
-		export DB_STATUS
-		echo "`date` : Connection is impossible"
-		exit 1
-	fi
+DB_STATUS="DOWN"
+export DB_STATUS
+echo "`date` : Connection is impossible"
+exit 1
+fi
 }
 
 # function for start installing Oracle objects in SYS schema
@@ -188,32 +188,32 @@ upgrade_apx() {
     if [[ "$DB_STATUS" == "UP" ]] 
     then
         unzip /app/upgrade/apex_19.1.zip
-		cd /app/apex
-		# installing objects
+cd /app/apex
+# installing objects
 
-		$ORACLE_HOME/bin/sqlplus -s -L ""${DB_UserSYS}"/"${DB_PasswordSYS}"@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST="${DB_HostName}")(PORT="${DB_Port}")))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME="${DB_SID}"))) as SYSDBA" <<EOF
-		@apexins1.sql SYSAUX SYSAUX TEMP /i/
-		commit;
-		quit;
+$ORACLE_HOME/bin/sqlplus -s -L ""${DB_UserSYS}"/"${DB_PasswordSYS}"@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST="${DB_HostName}")(PORT="${DB_Port}")))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME="${DB_SID}"))) as SYSDBA" <<EOF
+@apexins1.sql SYSAUX SYSAUX TEMP /i/
+commit;
+quit;
 EOF
         $ORACLE_HOME/bin/sqlplus -s -L ""${DB_UserSYS}"/"${DB_PasswordSYS}"@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST="${DB_HostName}")(PORT="${DB_Port}")))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME="${DB_SID}"))) as SYSDBA" <<EOF
-		@apexins2.sql SYSAUX SYSAUX TEMP /i/
-		commit;
-		quit;
+@apexins2.sql SYSAUX SYSAUX TEMP /i/
+commit;
+quit;
 EOF
         $ORACLE_HOME/bin/sqlplus -s -L ""${DB_UserSYS}"/"${DB_PasswordSYS}"@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST="${DB_HostName}")(PORT="${DB_Port}")))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME="${DB_SID}"))) as SYSDBA" <<EOF
-		@apexins3.sql SYSAUX SYSAUX TEMP /i/
-		commit;
-		quit;
+@apexins3.sql SYSAUX SYSAUX TEMP /i/
+commit;
+quit;
 EOF
         $ORACLE_HOME/bin/sqlplus -s -L ""${DB_UserSYS}"/"${DB_PasswordSYS}"@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST="${DB_HostName}")(PORT="${DB_Port}")))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME="${DB_SID}"))) as SYSDBA" <<EOF
-		@apex_epg_config.sql /app
-		commit;
-		quit;
+@apex_epg_config.sql /app
+commit;
+quit;
 EOF
         cd /app
-		rm -rf /app/apex
-		rm -rf /app/upgrade
+rm -rf /app/apex
+rm -rf /app/upgrade
         echo "`date` : Upgrade completed"
     else
         exit
@@ -225,7 +225,7 @@ exec_install() {
     echo "`date` : Start of objects installation"
     install_sys
     install_usr
-	install_apx
+install_apx
     echo "`date` : Done"
 }
 
