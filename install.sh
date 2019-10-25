@@ -4,6 +4,8 @@
 #Date        Author            ID       Description
 #----------  ---------------  --------  --------------------------------------------
 #2019-28-02  Klein A.M.       [000000]  Script created.
+#2019-06-10  Klein A.M.       [000000]  Added Oracle Apex upgrade to 19.1.
+#2019-25-10  Klein A.M.       [000000]  Altered Oracle DB Listner for cloud platforms.
 #******************************* HISTORY *******************************************
 
 # attributes of database
@@ -37,7 +39,8 @@ sc_file_apx="orainstsc_apx.txt"
 # writing objects in common order
 echo "`date` : Script file filling"
 
-find /app/coding/db_scripts  -maxdepth 3 -type f | grep sys/tablespaces  > "${sc_file_sys}"
+find /app/coding/db_scripts  -maxdepth 3 -type f | grep sys/settings     > "${sc_file_sys}"
+find /app/coding/db_scripts  -maxdepth 3 -type f | grep sys/tablespaces >> "${sc_file_sys}"
 find /app/coding/db_scripts  -maxdepth 3 -type f | grep sys/users       >> "${sc_file_sys}"
 find /app/coding/db_scripts  -maxdepth 3 -type f | grep apex/tables      > "${sc_file_usr}"
 find /app/coding/db_scripts  -maxdepth 3 -type f | grep apex/sequences  >> "${sc_file_usr}"
